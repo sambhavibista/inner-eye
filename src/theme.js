@@ -12,7 +12,7 @@ const theme = createTheme({
       secondary_600: "#6a1067",
       secondary_700:"#510C4F" ,// BLACK COLOR
     },
-    tertiary: {
+    accent: {
       main: "#f58220", // GREEN COLOR
     },
   },
@@ -27,6 +27,9 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "Roboto serif",
+    fontWeightRegular: "400",
+    fontWeightMedium: "500",
+    fontWeightBold: "700"
   },
 });
 
