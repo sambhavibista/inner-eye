@@ -74,6 +74,7 @@ function FirstSectionLanding() {
               fontWeight: "700",
               fontStyle: "Italic",
               color: "secondary.secondary_700",
+              mb:"40px"
             }}
           >
             “Nestled in the lap of the Himalayas in Nepal”

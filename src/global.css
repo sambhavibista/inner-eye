@@ -30,3 +30,12 @@
     font-size: clamp(0.75rem, 1vw + 0.25rem ,0.9rem) !important;
 }
 
+/* Center Carousel React Slick */
+.center__carousel .slick-slide > div {
+    display: grid;
+    place-items: center;
+    /* width: 80%; */
+    margin: auto;
+    padding: 0px;
+  }
+
