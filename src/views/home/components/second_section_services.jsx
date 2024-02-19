@@ -139,7 +139,7 @@ function SecondSectionServices() {
         onClose={() => setOpenFreeEbookDialog(false)}
         aria-describedby="alert-dialog-slide-description"
         maxWidth="sm"
-        fullWidth
+        
       >
         <DialogContent>
           <FreeEbookForm />

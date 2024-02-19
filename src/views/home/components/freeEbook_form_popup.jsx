@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography ,Grid, TextField, Button} from "@mui/material";
 
 function FreeEbookForm() {
+  const[name, setName]=useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log(
+      "data",
+      name,
+      mobileNumber,
+      email
+    );
+  };
   return (
     <div style={{margin: 0 , padding: 0}} >
       {/* heading */}
@@ -39,7 +52,7 @@ function FreeEbookForm() {
       </Box>
       {/* actual form */}
       <Box  mt= "1rem" sx={{display:"flex" , flexDirection:"column"}}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Grid
             // container
        
@@ -55,6 +68,8 @@ function FreeEbookForm() {
                 fullWidth
                 id="outlined-basic"
                 label="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 variant="outlined"
                 size="small"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
@@ -69,6 +84,8 @@ function FreeEbookForm() {
                 fullWidth
                 id="outlined-basic"
                 label="Mobile Number"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
                 variant="outlined"
                 size="small"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
@@ -84,6 +101,8 @@ function FreeEbookForm() {
                 type="email"
                 id="outlined-basic"
                 label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 variant="outlined"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
                 size="small"

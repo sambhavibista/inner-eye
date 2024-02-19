@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Box,
@@ -17,16 +17,51 @@ import {
 } from "@mui/material";
 
 function RegistrationFormPopup() {
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [occupation, setOccupation] = useState("");
+  const [medicalHistory, setMedicalHistory] = useState("");
+  const [packageType, setPackageType] = useState("");
+  const [affiliation, setAffiliation] = useState("");
+  const [teamSize, setTeamSize] = useState("");
+  const [memberNumber, setMemeerNumber] = useState("");
+  const [isTermChecked, setIsTermChecked] = useState(false);
+
+  // const handleNameChange = (e)=>{
+  //   console.log("name",e);
+  //   setName(e.target.value);
+  // }
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); //prevents page from refreshing
+    console.log(
+      "data",
+      name,
+      gender,
+      age,
+      email,
+      address,
+      phoneNumber,
+      occupation,
+      medicalHistory,
+      packageType,
+      affiliation,
+      teamSize,
+      memberNumber,
+      isTermChecked
+    );
+
+    
+  };
+
   return (
     <div>
       {/* Heading */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      
         <Box>
           <Typography
             className="responsive__fontsize18"
@@ -35,6 +70,7 @@ function RegistrationFormPopup() {
               lineHeight: "21px",
               color: "secondary.secondary_600",
               textTransform: "uppercase",
+              textAlign:"center"
             }}
           >
             Inner Eye
@@ -44,38 +80,18 @@ function RegistrationFormPopup() {
               fontWeight: "300",
               color: "secondary.secondary_600",
               mt: "7px",
+              textAlign:"center"
             }}
             className="responsive__fontsize14"
           >
             Registration Form
           </Typography>
         </Box>
-        <Box>
-          <Typography
-            className="responsive__fontsize14"
-            sx={{
-              lineHeight: "16px",
-              color: "secondary.secondary_600",
-              textTransform: "uppercase",
-            }}
-          >
-            Form Number
-          </Typography>
-          <Typography
-            className="responsive__fontsize14"
-            sx={{
-              lineHeight: "16px",
-              color: "secondary.secondary_600",
-              textTransform: "uppercase",
-            }}
-          >
-            211
-          </Typography>
-        </Box>
-      </Box>
+       
+      
       {/* Actual Form */}
       <Box sx={{ mt: "1rem" }}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <Grid
             container
             rowSpacing={1}
@@ -85,6 +101,8 @@ function RegistrationFormPopup() {
               <TextField
                 fullWidth
                 id="outlined-basic"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 label="Name"
                 variant="outlined"
                 size="small"
@@ -101,10 +119,9 @@ function RegistrationFormPopup() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={age}
+                  value={gender}
                   label="Gender"
-
-                  // onChange={handleChange}
+                  onChange={(e) => setGender(e.target.value)}
                 >
                   <MenuItem value="male">Male</MenuItem>
                   <MenuItem value="female">Female</MenuItem>
@@ -118,6 +135,8 @@ function RegistrationFormPopup() {
                 type="number"
                 id="outlined-basic"
                 label="Age"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
                 variant="outlined"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
                 size="small"
@@ -129,6 +148,8 @@ function RegistrationFormPopup() {
                 type="email"
                 id="outlined-basic"
                 label="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 variant="outlined"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
                 size="small"
@@ -140,6 +161,8 @@ function RegistrationFormPopup() {
                 type="text"
                 id="outlined-basic"
                 label="Address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
                 variant="outlined"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
                 size="small"
@@ -150,6 +173,8 @@ function RegistrationFormPopup() {
                 fullWidth
                 id="outlined-basic"
                 label="Phone Number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 variant="outlined"
                 size="small"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
@@ -160,6 +185,8 @@ function RegistrationFormPopup() {
                 fullWidth
                 id="outlined-basic"
                 label="Occupation"
+                value={occupation}
+                onChange={(e) => setOccupation(e.target.value)}
                 variant="outlined"
                 size="small"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
@@ -171,6 +198,8 @@ function RegistrationFormPopup() {
                 id="outlined-basic"
                 label="Medical History"
                 variant="outlined"
+                value={medicalHistory}
+                onChange={(e) => setMedicalHistory(e.target.value)}
                 size="small"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
               />{" "}
@@ -187,9 +216,9 @@ function RegistrationFormPopup() {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={age}
                   label="Package Type"
-                  // onChange={handleChange}
+                  value={packageType}
+                  onChange={(e) => setPackageType(e.target.value)}
                 >
                   <MenuItem value="basic">Basic</MenuItem>
                   <MenuItem value="standard">Standard</MenuItem>
@@ -202,6 +231,8 @@ function RegistrationFormPopup() {
                 fullWidth
                 id="outlined-basic"
                 label="Any other affilations"
+                value={affiliation}
+                onChange={(e) => setAffiliation(e.target.value)}
                 variant="outlined"
                 size="small"
                 sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
@@ -220,6 +251,8 @@ function RegistrationFormPopup() {
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
+                  value={teamSize}
+                  onChange={(e) => setTeamSize(e.target.value)}
                 >
                   <FormControlLabel
                     value="single"
@@ -234,23 +267,28 @@ function RegistrationFormPopup() {
                 </RadioGroup>
               </FormControl>{" "}
             </Grid>
-            <Grid
-              item
-              xs={12}
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <TextField
-                fullWidth
-                id="outlined-basic"
-                label="Enter Member Number"
-                variant="outlined"
-                size="small"
-                sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
-              />{" "}
-            </Grid>
+
+            {teamSize !== "single" && (
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <TextField
+                  fullWidth
+                  id="outlined-basic"
+                  label="Enter Member Number"
+                  value={memberNumber}
+                  onChange={(e) => setMemeerNumber(e.target.value)}
+                  variant="outlined"
+                  size="small"
+                  sx={{ maxWidth: { xs: "100%", md: "14rem" } }}
+                />{" "}
+              </Grid>
+            )}
             <Grid
               item
               xs={12}
@@ -262,6 +300,8 @@ function RegistrationFormPopup() {
               <FormControlLabel
                 control={<Checkbox defaultChecked />}
                 label="I hereby agree to the present and future terms & conditions of inner eye pvt.ltd"
+                value={isTermChecked}
+                onChange={(e) => setIsTermChecked(e.target.value)}
               />
             </Grid>
             <Grid

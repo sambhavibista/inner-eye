@@ -26,7 +26,7 @@ function FirstSectionLanding() {
           gap: "1.5rem",
         }}
       >
-        <Typography
+        <Box
           sx={{
             fontSize: "30px",
             fontWeight: "600",
@@ -38,7 +38,7 @@ function FirstSectionLanding() {
             INNER EYE
             </OrangeDivider>
           
-        </Typography>
+        </Box>
         <p className="responsive_fontsize20" >
           Nestled in the lap of the Himalayas in Nepal, Inner Eye is not just a
           retreat; it's a sanctuary for the mind, body, and spirit. Our
