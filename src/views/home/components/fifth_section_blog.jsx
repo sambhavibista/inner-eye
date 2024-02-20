@@ -49,10 +49,22 @@ function FifthSectionBlog() {
       </Typography>
     </Box>
     {/* second box */}
-    <Box>
-      <Typography>
-        
+    <Box sx={{display:"flex", justifyContent:"space-between" }}>
+      <Typography sx={{backgroundColor:"white", height:"200px", width:"545px", mr:"183px"}}>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px",marginTop:"54px", marginLeft:"60px" ,}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facilisis</p>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px", marginLeft:"60px" ,}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facili</p>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px", marginLeft:"60px" ,}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facilisis</p>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px", marginLeft:"60px" , marginBottom:"54px"}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facili</p>
       </Typography>
+      <Typography sx={{backgroundColor:"white", height:"200px", width:"545px" , mb:"270px"}}>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px",marginTop:"54px", marginLeft:"60px" ,}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facilisis</p>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px", marginLeft:"60px" ,}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facili</p>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px", marginLeft:"60px" ,}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facilisis</p>
+        <p className='responsive_fontSize' style={{fontFamily:"Times New Romen" , fontStyle:"italic", fontWeight:"400",lineHeight:"18px", marginLeft:"60px" , marginBottom:"54px"}}>Lorem ipsum dolor sit amet consectetur. Et ac pulvinar facili</p>
+      </Typography> 
+        
+      
+      
     </Box>
     </Box>
   )

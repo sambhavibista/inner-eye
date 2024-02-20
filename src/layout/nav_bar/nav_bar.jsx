@@ -15,6 +15,7 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import  CancelIcon  from "@mui/icons-material/Cancel";
 //ASSESTS IMPORT
 import logo from "../../assets/logo/innery-eye logo.png";
 
@@ -136,8 +137,16 @@ function NavBar() {
         anchor="top"
         open={isMobileDrawerOpen}
         onClose={() => setIsMobileDrawerOpen(false)}
+        variant="temporary"
       >
-        {renderItems}
+        <Box sx={{ display: "flex", justifyContent: "flex-end", padding: "0.5rem" }}>
+          <IconButton onClick={() => setIsMobileDrawerOpen(false)}>
+            <CancelIcon />
+          </IconButton>
+        </Box>
+        <Box sx={{ textAlign: "center", letterSpacing: ".2rem", display: "flex", flexDirection: "column", justifyContent: "center", gap: "1.5rem", paddingY: 2 }}>
+          {renderItems}
+        </Box>
       </Drawer>
     </AppBar>
   );

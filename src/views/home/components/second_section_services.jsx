@@ -15,6 +15,18 @@ import ServiceList from "./service_list";
 import RegistrationForm from "./registration_form_popup";
 import FreeEbookForm from "./freeEbook_form_popup";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+  decrementByAmount,
+  incrementAge,
+  decrementAge,
+  incrementAgeByAmount,
+  decrementAgeByAmount,
+} from "src/redux/api/home_slice_api";
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -25,6 +37,37 @@ const handleClose = () => {
 function SecondSectionServices() {
   const [openRegistrationDialog, setOpenRegistrationDialog] = useState(false);
   const [openFreeEbookDialog, setOpenFreeEbookDialog] = useState(false);
+
+  const dispatch = useDispatch();
+  const value = useSelector((state) => state.home?.value);
+  const age = useSelector((state) => state.home?.age);
+
+  function handleIncrement() {
+    dispatch(increment());
+  }
+  function handleDecrement() {
+    dispatch(decrement());
+  }
+  function handleIncrementByAmount() {
+    dispatch(incrementByAmount(20));
+  }
+  function handleDecrementByAmount() {
+    dispatch(decrementByAmount(20));
+  }
+
+  function handleIncrementAge() {
+    dispatch(incrementAge());
+  }
+  function handleDecrementAge(){
+    dispatch(decrementAge());
+  }
+  function handleIncrementAgeByAmount(){
+    dispatch(incrementAgeByAmount(20));
+  }
+  function handleDecrementAgeByAmount(){
+    dispatch(decrementAgeByAmount(20));
+  }
+
 
   return (
     <Box sx={{ gap: "140px" }}>
@@ -145,6 +188,9 @@ function SecondSectionServices() {
           <FreeEbookForm />
         </DialogContent>
       </Dialog>
+      <h1>My value: {value}</h1>
+      <h1>My age: {age}</h1>
+      
     </Box>
   );
 }

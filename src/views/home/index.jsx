@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import ThirdSectionPodcast from "./components/third_section_podcast";
 import FourthSectionGallery from "./components/fourth_section_gallery";
 import FifthSectionBlog from "./components/fifth_section_blog";
+import SixthSectionEvents from "./components/sixth_section_events";
+import SeventhSectionABoutUs from "./components/seventh_section_aboutUs";
 
 function HomeView() {
   return (
@@ -32,6 +34,16 @@ function HomeView() {
       <Box component="section" backgroundColor="primary.main">
         <div className="apply_maxwidth">
           <FifthSectionBlog />
+        </div>
+      </Box>
+      <Box component="section" backgroundColor="white">
+        <div className="apply_maxwidth">
+          <SixthSectionEvents />
+        </div>
+      </Box>
+      <Box component="section" backgroundColor="primary.main">
+        <div className="apply_maxwidth">
+          <SeventhSectionABoutUs />
         </div>
       </Box>
     </main>
