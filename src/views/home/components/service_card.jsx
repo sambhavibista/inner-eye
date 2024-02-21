@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardActions } from "@mui/material";
 import { Typography } from "@mui/material/";
 
-function ServiceCard() {
+function ServiceCard({item}) {
   return (
     <Card
       sx={{
@@ -17,7 +17,7 @@ function ServiceCard() {
           sx={{ fontWeight: "600", color: "white" }}
           className="responsive_fontSize18"
         >
-          Sound healing
+          {item?.title}
         </Typography>
 
         <Typography
@@ -25,8 +25,7 @@ function ServiceCard() {
           sx={{ color: "white", fontWeight: "300" }}
           className="responsive_fontSize14"
         >
-          Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet
-          dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa
+          {item?.description}
         </Typography>
       </CardContent>
     </Card>

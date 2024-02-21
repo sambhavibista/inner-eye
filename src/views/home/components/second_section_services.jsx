@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 import {
   Box,
   Typography,
@@ -6,6 +7,7 @@ import {
   Dialog,
   DialogContent,
   Slide,
+  CircularProgress,
 } from "@mui/material";
 // import OrangeDivider from '../../../components/ui/divider'; //relative import
 
@@ -16,16 +18,7 @@ import RegistrationForm from "./registration_form_popup";
 import FreeEbookForm from "./freeEbook_form_popup";
 
 import { useSelector, useDispatch } from "react-redux";
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-  decrementByAmount,
-  incrementAge,
-  decrementAge,
-  incrementAgeByAmount,
-  decrementAgeByAmount,
-} from "src/redux/api/home_slice_api";
+import { fetchServiceList } from "src/redux/api/home_slice_api";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -35,39 +28,22 @@ const handleClose = () => {
   setOpen(false);
 };
 function SecondSectionServices() {
+  const dispatch = useDispatch();
+
+  const isServiceListLoading = useSelector(
+    (state) => state.home?.isServiceListLoading
+  );
+
+  const serviceList = useSelector((state) => state.home?.serviceList);
+
   const [openRegistrationDialog, setOpenRegistrationDialog] = useState(false);
   const [openFreeEbookDialog, setOpenFreeEbookDialog] = useState(false);
 
-  const dispatch = useDispatch();
-  const value = useSelector((state) => state.home?.value);
-  const age = useSelector((state) => state.home?.age);
+  useEffect(() => {
+    dispatch(fetchServiceList());
+  }, [dispatch]);
 
-  function handleIncrement() {
-    dispatch(increment());
-  }
-  function handleDecrement() {
-    dispatch(decrement());
-  }
-  function handleIncrementByAmount() {
-    dispatch(incrementByAmount(20));
-  }
-  function handleDecrementByAmount() {
-    dispatch(decrementByAmount(20));
-  }
-
-  function handleIncrementAge() {
-    dispatch(incrementAge());
-  }
-  function handleDecrementAge(){
-    dispatch(decrementAge());
-  }
-  function handleIncrementAgeByAmount(){
-    dispatch(incrementAgeByAmount(20));
-  }
-  function handleDecrementAgeByAmount(){
-    dispatch(decrementAgeByAmount(20));
-  }
-
+  console.log("service list state", isServiceListLoading, serviceList);
 
   return (
     <Box sx={{ gap: "140px" }}>
@@ -105,7 +81,7 @@ function SecondSectionServices() {
             letterSpacing: "0.35px",
             lineHeight: "42px",
             fontFamily: "Times New Roman",
-            mb:"11px"
+            mb: "11px",
           }}
         >
           Services
@@ -113,8 +89,14 @@ function SecondSectionServices() {
       </Box>
 
       {/* second box */}
-      <Box sx={{mt:"47px",mb:"47px"}}>
-        <ServiceList />
+      <Box sx={{ mt: "47px", mb: "47px" }}>
+        {isServiceListLoading ? (
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress sx={{ color: "gray" }} />
+          </Box>
+        ) : (
+          <ServiceList serviceList={serviceList} />
+        )}
       </Box>
 
       {/* third box */}
@@ -124,7 +106,7 @@ function SecondSectionServices() {
           justifyContent: "center",
           gap: "30px",
           marginTop: "40px",
-          mb:"50px"
+          mb: "50px",
         }}
       >
         <Button
@@ -182,15 +164,13 @@ function SecondSectionServices() {
         onClose={() => setOpenFreeEbookDialog(false)}
         aria-describedby="alert-dialog-slide-description"
         maxWidth="sm"
-        
       >
         <DialogContent>
           <FreeEbookForm />
         </DialogContent>
       </Dialog>
-      <h1>My value: {value}</h1>
-      <h1>My age: {age}</h1>
-      
+      {/* <h1>My value: {value}</h1>
+      <h1>My age: {age}</h1> */}
     </Box>
   );
 }

@@ -1,5 +1,6 @@
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import React from "react";
+import ReactPlayer from 'react-player/lazy'
 import podcast from "../../../assets/images/podcast.png";
 import youtube_logo from "../../../assets/logo/youtube_logo.png";
 
@@ -15,15 +16,13 @@ function PodcastCard() {
         // padding: "30px 24px",
       }}
     >
-      <CardContent>
-        <a
-          href="https://www.youtube.com/"
-          style={{ textDecoration: "none", color: "white" }}
-        >
+      <CardContent sx={{padding:"0"}}>
+        
+          
           <div style={{ position: "relative", width: "100%", height: "100%" }}>
-            <img
-              src={podcast}
-              alt="podcast"
+            <ReactPlayer
+              url="https://www.youtube.com"
+            
               style={{ Height: "280px", maxWidth: "287" }}
             />
             <div
@@ -55,7 +54,7 @@ function PodcastCard() {
             Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet
             dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa
           </Typography>
-        </a>
+        
       </CardContent>
     </Card>
   );

@@ -3,7 +3,18 @@ import { Box, Typography } from "@mui/material";
 import OrangeDivider from "src/components/ui/orange_divider";
 import GalleryList from "./gallery_list";
 
+import { useSelector, useDispatch } from "react-redux";
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 function FourthSectionGallery() {
+  const dispatch = useDispatch();
+
+  const isGalleryListLoading = useSelector(
+    (state) => state.home?.isGalleryListLoading
+  );
   return (
     <Box sx={{ gap: "140px" }}>
       {/* first box */}

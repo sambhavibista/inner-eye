@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import { Box } from '@mui/material'
 
 
-function ServiceList() {
+function ServiceList({serviceList}) {
     const settings = {
         dots: true,
         infinite: false,
@@ -40,15 +40,16 @@ function ServiceList() {
           }
         ]
       };
+      console.log("service list",serviceList);
   return (
     <div className='center__carousel'>
         <Slider {...settings}>
-    <ServiceCard />
-    <ServiceCard />
-    <ServiceCard />
-    <ServiceCard />    
-    <ServiceCard />    
-    <ServiceCard />    
+          {
+            serviceList?.map((item)=>{
+               return <ServiceCard key={item?._id} item={item} />
+            })
+          }
+      
        
 
     </Slider>

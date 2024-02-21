@@ -12,12 +12,12 @@ function GalleryCard() {
         mb: "95px", 
         padding: 0,
         margin : 0
-      }}
+      }} elevation={0}
     >
-        <CardContent>
-            <Typography>
-                <img src={gallery} alt="gallery" style={{maxWidth:"100%", height:"100%" , objectFit:"cover" }} />
-            </Typography>
+        <CardContent sx={{padding:"0" ,}}>
+            
+                <img src={gallery} alt="gallery" style={{width:"100%", height:"100%" , objectFit:"cover" }} />
+            
 
 
         </CardContent>

@@ -7,12 +7,9 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   increment,
   decrement,
-  incrementByAmount,
-  decrementByAmount,
-  incrementAge,
-  decrementAge,
-  incrementAgeByAmount,
-  decrementAgeByAmount,
+  
+  
+  
 } from "src/redux/api/home_slice_api"; //absolute path
 function FirstSectionLanding() {
   //getting state value from home slice
@@ -56,8 +53,8 @@ function FirstSectionLanding() {
         flexDirection: { xs: "column-reverse", md: "row" },
       }}
     >
-      <h1>My value: {value}</h1>
-      <h1>My age: {age}</h1>
+      {/* // <h1>My value: {value}</h1>
+      // <h1>My age: {age}</h1> */}
       {/* LEFT SIDE */}
       <Box
         sx={{
@@ -103,7 +100,8 @@ function FirstSectionLanding() {
           }}
         >
           About Us
-        </Button>
+          </Button>
+        {/*
         <Button sx={{ color: "black" }} onClick={handleIncrement}>
           {" "}
           Increment me
@@ -128,7 +126,7 @@ function FirstSectionLanding() {
         </Button>
         <Button sx={{ color: "black" }} onClick={handleDecrementAgeByAmount}>
           Decrement age By amount
-        </Button>
+        </Button> */}
       </Box>
       {/* RIGHT SIDE */}
       <Box>

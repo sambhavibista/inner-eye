@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import {
   Box,
@@ -15,6 +16,7 @@ import {
   Button,
   Grid,
 } from "@mui/material";
+import { addRegistration } from "src/redux/api/home_slice_api";
 
 function RegistrationFormPopup() {
   const [name, setName] = useState("");
@@ -30,6 +32,8 @@ function RegistrationFormPopup() {
   const [teamSize, setTeamSize] = useState("");
   const [memberNumber, setMemeerNumber] = useState("");
   const [isTermChecked, setIsTermChecked] = useState(false);
+  
+  const dispatch = useDispatch();
 
   // const handleNameChange = (e)=>{
   //   console.log("name",e);
@@ -38,8 +42,10 @@ function RegistrationFormPopup() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); //prevents page from refreshing
-    console.log(
-      "data",
+
+    //  if(!isTermChecked) return;
+     
+    const data = {
       name,
       gender,
       age,
@@ -52,11 +58,13 @@ function RegistrationFormPopup() {
       affiliation,
       teamSize,
       memberNumber,
-      isTermChecked
-    );
+    };
 
-    
+console.log("data",data);
+
+    dispatch(addRegistration(data));
   };
+ 
 
   return (
     <div>
