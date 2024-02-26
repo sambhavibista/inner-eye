@@ -19,6 +19,7 @@ import FreeEbookForm from "./freeEbook_form_popup";
 
 import { useSelector, useDispatch } from "react-redux";
 import { fetchServiceList } from "src/redux/api/home_slice_api";
+import Loader from "src/components/loader/loader";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -91,9 +92,7 @@ function SecondSectionServices() {
       {/* second box */}
       <Box sx={{ mt: "47px", mb: "47px" }}>
         {isServiceListLoading ? (
-          <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <CircularProgress sx={{ color: "gray" }} />
-          </Box>
+          <Loader />
         ) : (
           <ServiceList serviceList={serviceList} />
         )}

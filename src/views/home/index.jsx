@@ -7,6 +7,8 @@ import FourthSectionGallery from "./components/fourth_section_gallery";
 import FifthSectionBlog from "./components/fifth_section_blog";
 import SixthSectionEvents from "./components/sixth_section_events";
 import SeventhSectionABoutUs from "./components/seventh_section_aboutUs";
+import NinthSectionContact from "./components/ninth_section_contact";
+import FooterComponents from "src/layout/footer_bar/footer_component";
 
 function HomeView() {
   return (
@@ -44,6 +46,11 @@ function HomeView() {
       <Box component="section" backgroundColor="primary.main">
         <div className="apply_maxwidth">
           <SeventhSectionABoutUs />
+        </div>
+      </Box>
+      <Box component="section" backgroundColor="primary.main">
+        <div className="apply_maxwidth">
+          <NinthSectionContact />
         </div>
       </Box>
     </main>

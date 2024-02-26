@@ -17,12 +17,14 @@ function PodcastCard() {
       }}
     >
       <CardContent sx={{padding:"0"}}>
-        
-          
+        <a
+          href="https://www.youtube.com/"
+          style={{ textDecoration: "none", color: "white" }}
+        >
           <div style={{ position: "relative", width: "100%", height: "100%" }}>
-            <ReactPlayer
-              url="https://www.youtube.com"
-            
+            <img
+              src={podcast}
+              alt="podcast"
               style={{ Height: "280px", maxWidth: "287" }}
             />
             <div
@@ -54,7 +56,7 @@ function PodcastCard() {
             Lorem ipsum dolor sit amet dolor sit bdsa Lorem ipsum dolor sit amet
             dolor sit bdsa Lorem ipsum dolor sit amet dolor sit bdsa
           </Typography>
-        
+        </a>
       </CardContent>
     </Card>
   );

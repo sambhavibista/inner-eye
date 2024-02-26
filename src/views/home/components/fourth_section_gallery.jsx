@@ -1,20 +1,28 @@
-import React from "react";
+import {React,useEffect} from "react";
 import { Box, Typography } from "@mui/material";
 import OrangeDivider from "src/components/ui/orange_divider";
 import GalleryList from "./gallery_list";
+import Loader from "src/components/loader/loader";
 
 import { useSelector, useDispatch } from "react-redux";
+import { fetchGalleryList } from "src/redux/api/home_slice_api";
 
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 function FourthSectionGallery() {
-  const dispatch = useDispatch();
 
+  const galleryList = useSelector((state) => state.home?.galleryList)
   const isGalleryListLoading = useSelector(
     (state) => state.home?.isGalleryListLoading
   );
+  
+  console.log("gallery list state", isGalleryListLoading, galleryList);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchGalleryList());
+  }, [dispatch]);
+
+
+ 
   return (
     <Box sx={{ gap: "140px" }}>
       {/* first box */}
@@ -59,7 +67,12 @@ function FourthSectionGallery() {
       </Box>
       {/* second Box */}
       <Box sx={{mt:"47px",mb:"47px"}}>
-        <GalleryList />
+
+      {isGalleryListLoading ? (
+          <Loader />
+        ) : (
+          <GalleryList galleryList={galleryList} />
+        )}
       </Box>
     </Box>
   );

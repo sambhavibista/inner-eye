@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { Box } from "@mui/material";
 import GalleryCard from "./gallery_card";
 
-function GalleryList() {
+function GalleryList({galleryList}) {
   const settings = {
     dots: true,
     infinite: false,
@@ -40,14 +40,14 @@ function GalleryList() {
       },
     ],
   };
+
+  console.log("gallery list", galleryList);
   return (
     <div className="center__carousel">
       <Slider {...settings}>
-        <GalleryCard />
-        <GalleryCard />
-        <GalleryCard />
-        <GalleryCard />
-        <GalleryCard />
+        {galleryList?.map((item) => (
+          <GalleryCard key={item?._id} item={item} />
+        ))}
       </Slider>
     </div>
   );

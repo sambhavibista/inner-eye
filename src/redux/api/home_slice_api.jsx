@@ -4,9 +4,6 @@ import axios from "axios";
 import { BASE_URL } from "src/config/base_url";
 
 const initialState = {
-    value: 1000,
-    name: "hello",
-    age: 49,
 
     isServiceListLoading: false,
     serviceList: [],
@@ -14,6 +11,9 @@ const initialState = {
 
     isRegistrationLoading: false,
 
+    isGalleryListLoading: false,
+    galleryList: [],
+    galleryListError: null,
 };
 
 // Fetch Service List
@@ -36,6 +36,7 @@ export const fetchServiceList = createAsyncThunk(
     }
 );
 
+//service Registration
 export const addRegistration = createAsyncThunk(
     "home/addRegistration",
     async (data, { rejectWithValue }) => {
@@ -56,25 +57,30 @@ export const addRegistration = createAsyncThunk(
     }
 );
 
+//gallery list
+export const fetchGalleryList = createAsyncThunk(
+    "home/fetchGalleryList",
+    async (_, { rejectWithValue }) => {
+        // api
+
+        try {
+            const response = await axios.get(`${BASE_URL}/gallary`);
+            console.log("gallery response", response);
+            if (response?.status === 200) {
+                return response?.data?.data;
+            }
+        } catch (err) {
+            const errorMessage =
+                err?.response?.data?.message || "Could not fetch gallery list";
+            return rejectWithValue(errorMessage);
+        }
+    }
+);
+
 export const homeSlice = createSlice({
     name: "home",
     initialState,
 
-    reducers: {
-        incrementValue: (state) => {
-            state.value += 1;
-        },
-        decrement: (state) => {
-            state.value -= 1;
-        },
-        incrementAge: (state) => {
-            state.age += 1;
-        },
-        incrementByAmount: (state, action) => {
-            console.log(action);
-            state.value += action.payload;
-        },
-    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchServiceList.pending, (state) => {
@@ -88,6 +94,7 @@ export const homeSlice = createSlice({
                 state.isServiceListLoading = false;
                 state.serviceListError = action?.payload;
             })
+
             // Add registration
             .addCase(addRegistration.pending, (state) => {
                 state.isRegistrationLoading = true;
@@ -97,7 +104,21 @@ export const homeSlice = createSlice({
             })
             .addCase(addRegistration.rejected, (state, action) => {
                 state.isRegistrationLoading = false;
-            });
+            })
+
+            //fetch gallery
+            .addCase(fetchGalleryList.pending,(state, action)=>{
+                state.isGalleryListLoading = true;
+                
+            })
+            .addCase(fetchGalleryList.fulfilled,(state, action)=>{
+                state.isGalleryListLoading = false;
+                state.galleryList = action?.payload;
+            })
+            .addCase(fetchGalleryList.rejected,(state, action)=>{
+                state.isGalleryListLoading = false;
+                state.serviceListError = action?.payload;
+            })
     },
 });
 
